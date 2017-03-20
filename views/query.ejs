@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<title>DPCチェッカー</title>
+
+<head>
+<link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/material.deep_purple-pink.min.css">
+<script type="text/javascript" charset="utf8" src="/static/material.min.js"></script>
+<script type="text/javascript" charset="utf8" src = "/static/jquery.js"></script>
+<script type="text/javascript" charset="utf8" src = "/static/jquery.dataTables.min.js"></script>
+</head>
+
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+          <h1 class="mdl-typography--display-3">DPCチェッカー</h1>
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+          <a href="/" class="mdl-layout__tab is-active">HOME</a>
+          <a href="/query" class="mdl-layout__tab">Query</a>
+        </div>
+      </header>
+
+
+<main class="mdl-layout__content">
+ 
+<div class="mdl-grid">
+<div class="demo-content mdl-color--white mdl-shadow--4dp mdl-cell mdl-cell--8-col">
+<h2 class="mdl-typography--display-1">クエリ発行ページ</h2>
+
+
+<form action="/query"  method="post">
+<p>クエリ選択</p>
+
+<% queryname.forEach(function(val){ %>
+   <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for= <%= val %>>
+   <input type="radio" class="mdl-radio__button" name="q1" id=<%= val %> value=<%= val %> >  
+   <span class="mdl-radio__label"><div class = "mdl-typography--headline"><%= val %></div></span>
+   </label>
+   <br>
+<% }) %>
+
+<br>
+ <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="submit" name='trigger' value="on">クエリ実行</button>
+ </form>
+
+</div>
+
+
+<div class="demo-content mdl-color--white mdl-shadow--4dp mdl-cell mdl-cell--8-col"> 
+<h1 class="mdl-typography--headline">クエリデータ</h1>
+<h2 class="mdl-typography--title"><%- s_queryname %></h2>
+<h3 class="mdl-typography--title"><a href="/csv"><%- linktext %></a></h3>
+<div classes="mdl-data-table mdl-js-data-table">
+<%- query_data %>
+</div>
+</div>
+</div>
+
+<script>
+$(document).ready(function(){
+$("table").dataTable(
+{
+iDisplayLength : -1
+}
+);
+});
+
+
+$(document).ready(function(){
+  $("table").addClass("mdl-data-table mdl-js-data-table");
+});
+
+
+ </script>
+

@@ -1,0 +1,1 @@
+select データ識別番号,実施年月日 from dtable LIMIT 20;
