@@ -1,13 +1,13 @@
 {
-  "name": "sqlite_test",
+  "name": "dpc_checker_node",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "dpc.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "stagira",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.14.0"
   }
